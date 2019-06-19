@@ -1,0 +1,28 @@
+[package]
+name = "grocksdb"
+description = "Rust wrapper for Facebook's RocksDB embeddable database with transactions"
+version = "6.1.0"
+authors = ["Ramon Navarro Bosch <ramon.nb@gmail.com>", "Tyler Neely <t@jujit.su>", "David Greenberg <dsg123456789@gmail.com>"]
+license = "Apache-2.0"
+keywords = ["database", "embedded", "LSM-tree", "persistence"]
+homepage = "https://github.com/guillotinaweb/grocksdb"
+exclude = [
+    ".gitignore",
+    ".travis.yml",
+    "deploy.sh",
+    "test/**/*",
+]
+
+[features]
+default = ["snappy", "lz4", "zstd", "zlib", "bzip2"]
+valgrind = []
+snappy = ["librocksdb-sys/snappy"]
+lz4 = ["librocksdb-sys/lz4"]
+zstd = ["librocksdb-sys/zstd"]
+zlib = ["librocksdb-sys/zlib"]
+bzip2 = ["librocksdb-sys/bzip2"]
+
+
+[dependencies]
+libc = "0.2"
+librocksdb-sys = { path = "../librocksdb-sys", version = "6.1.2" }
